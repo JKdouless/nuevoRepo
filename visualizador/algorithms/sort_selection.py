@@ -1,4 +1,5 @@
-# ...existing code...
+# Contrato: init(vals), step() -> {"a": int, "b": int, "swap": bool, "done": bool}
+
 items = []
 n = 0
 i = 0          # cabeza de la parte no ordenada
@@ -15,21 +16,18 @@ def init(vals):
     min_idx = i
     fase = "buscar"
 
-def step():
-    """
-    Devuelve:
-      - {"a": int, "b": int, "swap": bool, "done": False} para comparaciones o swaps parciales
-      - {"done": True} cuando el algoritmo terminó
-    Comportamiento por llamada:
-      - Fase "buscar": compara items[j] con items[min_idx], actualiza min_idx, avanza j
-        y devuelve {"a": min_idx, "b": j_actual, "swap": False, "done": False}.
-        Si j alcanza n, cambia a fase "swap" (el swap se hará en la siguiente llamada).
-      - Fase "swap": realiza (si corresponde) el único swap entre i y min_idx y lo devuelve
-        con "swap": True. Luego avanza i, reinicia j y min_idx, y vuelve a "buscar".
-    """
-    global items, n, i, j, min_idx, fase
+#def step():
+    # TODO:
+    # - Fase "buscar": comparar j con min_idx, actualizar min_idx, avanzar j.
+    #   Devolver {"a": min_idx, "b": j_actual, "swap": False, "done": False}.
+    #   Al terminar el barrido, pasar a fase "swap".
+    # - Fase "swap": si min_idx != i, hacer ese único swap y devolverlo.
+    #   Luego avanzar i, reiniciar j=i+1 y min_idx=i, volver a "buscar".
+    #
+    # Cuando i llegue al final, devolvé {"done": True}.
+    #return {"done": True}
 
-    # Fin rápido si no hay nada que ordenar
+# Finiquitacion rapida
     if n <= 1 or i >= n - 1:
         return {"done": True}
 
@@ -41,21 +39,21 @@ def step():
             j += 1
             return {"a": min_idx, "b": j_actual, "swap": False, "done": False}
         else:
-            # terminamos el barrido de la pasada; preparar swap en la próxima llamada
+            # buscqueda o swap
             fase = "swap"
 
     if fase == "swap":
-        # realizar (o no) el swap entre i y min_idx y devolverlo como acción
+        # swap o no swap
         if min_idx != i:
             items[i], items[min_idx] = items[min_idx], items[i]
             result = {"a": i, "b": min_idx, "swap": True, "done": False}
         else:
             result = {"a": i, "b": min_idx, "swap": False, "done": False}
 
-        # avanzar a la siguiente cabeza de la parte no ordenada
+        # mover cabeza
         i += 1
         if i >= n - 1:
-            # próxima llamada retornará done
+            # proximo punto de inicio
             j = i + 1
             min_idx = i
             fase = "buscar"
@@ -65,4 +63,4 @@ def step():
             fase = "buscar"
 
         return result
-# ...existing code...
+    #terminado
