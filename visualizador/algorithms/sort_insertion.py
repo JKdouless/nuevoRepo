@@ -12,6 +12,9 @@ def init(vals):
     i = 1      # común: arrancar en el segundo elemento
     j = None
 
+
+nigga
+
 def step():
     # TODO:
     # - Si i >= n: devolver {"done": True}.
