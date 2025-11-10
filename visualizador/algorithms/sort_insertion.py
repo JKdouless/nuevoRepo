@@ -34,6 +34,7 @@ def step():
     # - Si ya no hay que desplazar: avanzar i y setear j=None.
     i += 1
     j = None
+    
     return {"a": i-1, "b": None, "swap": False, "done": False} #return {"done": True}
     
     
