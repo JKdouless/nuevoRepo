@@ -6,7 +6,7 @@ i = 0          # cabeza de la parte no ordenada
 j = 0          # cursor que recorre y busca el mínimo
 min_idx = 0    # índice del mínimo de la pasada actual
 fase = "buscar"  # "buscar" | "swap"
-
+a=0
 def init(vals):
     global items, n, i, j, min_idx, fase
     items = list(vals)
@@ -32,35 +32,23 @@ def init(vals):
         return {"done": True}
 
     if fase == "buscar":
-        if j < n:
-            j_actual = j
-            if items[j] < items[min_idx]:
-                min_idx = j
-            j += 1
-            return {"a": min_idx, "b": j_actual, "swap": False, "done": False}
-        else:
-            # buscqueda o swap
+        if j >= n:
             fase = "swap"
+        else:
+            for i in range(a, n):
+                if items[i] < items[j]:
+                    items[min_idx] = items[j]
+                    j_actual = j
+                return {"a": min_idx, "b": j_actual, "swap": False, "done": False}
+            else:
+                # busqueda o swap
+                fase = "swap"
 
     if fase == "swap":
         # swap o no swap
-        if min_idx != i:
-            items[i], items[min_idx] = items[min_idx], items[i]
+        if items[a] > items[min_idx]:
+            items[a], items[min_idx] = items[min_idx], items[a]
+            a+=1
+            min_idx=i
+            j=i+1
             result = {"a": i, "b": min_idx, "swap": True, "done": False}
-        else:
-            result = {"a": i, "b": min_idx, "swap": False, "done": False}
-
-        # mover cabeza
-        i += 1
-        if i >= n - 1:
-            # proximo punto de inicio
-            j = i + 1
-            min_idx = i
-            fase = "buscar"
-        else:
-            j = i + 1
-            min_idx = i
-            fase = "buscar"
-
-        return result
-    #terminado
