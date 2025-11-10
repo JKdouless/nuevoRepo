@@ -1,24 +1,38 @@
 # Contrato: init(vals), step() -> {"a": int, "b": int, "swap": bool, "done": bool}
 
 items = []
+sublist = []
 n = 0
-I = 0
-J = 0
-P = 0
+i = 0
+j = 0
+p = 0
+m = 0
 
 def init(vals):
-    global items, n
-    items = list(vals)
-    n = len(items)
-    P = n-1 #pivote inicial
-    i = 0
-    
-    
+    global items, n, p, i, j
+    items = list(vals) 
+    n = len(items) 
+    p = n-1 #pivote inicial
+    m = #guardo la posicion de un numero especifico para swapear
+    i = 0 
+    j = i
+    sublist = []
 
+
+    
 def step():
-    # TODO: implementar UN micro-paso de tu algoritmo y devolver el dict.
-    # Recordá:
-    # - a, b dentro de [0, n-1]
-    # - si swap=True, primero hacé el intercambio en 'items'
-    # - cuando termines, devolvé {"done": True}
+    global items, n, p , i ,j, sublist
+    
+    if i > n:
+        return {"done": True}
+
+    if items[j] > items[p]:
+        if items [j] > items[j+1]:
+            items[j], items[j+1] = items[j+1], items[j]
+            
+
+        
+
+
+
     return {"done": True}
