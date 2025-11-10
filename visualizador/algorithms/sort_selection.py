@@ -27,28 +27,31 @@ def init(vals):
     # Cuando i llegue al final, devolvé {"done": True}.
     #return {"done": True}
 
-# Finiquitacion rapida
-    if n <= 1 or i >= n - 1:
-        return {"done": True}
 
+
+def step():
+    global items, n, i, j, min_idx, fase
+    if i >= n - 1:
+        return {"done": True}
     if fase == "buscar":
-        if j >= n:
-            fase = "swap"
-        else:
-            for i in range(a, n):
-                if items[i] < items[j]:
-                    items[min_idx] = items[j]
-                    j_actual = j
-                return {"a": min_idx, "b": j_actual, "swap": False, "done": False}
-            else:
-                # busqueda o swap
-                fase = "swap"
+        if j < n:
+            if items[j] < items[min_idx]:
+                min_idx = j
+            j_actual = j
+            j += 1
+            return {"a": min_idx, "b": j_actual, "swap": True, "done": False}
+        if i >= n - 1:
+            return {"done": True}       
+        fase = "swap"
 
     if fase == "swap":
-        # swap o no swap
-        if items[a] > items[min_idx]:
-            items[a], items[min_idx] = items[min_idx], items[a]
-            a+=1
-            min_idx=i
-            j=i+1
-            result = {"a": i, "b": min_idx, "swap": True, "done": False}
+            items[j], items[min_idx] = items[min_idx], items[j]
+            return {"a": i, "b": min_idx, "swap": True, "done": False}
+
+    i += 1
+    if i < n - 1:
+        min_idx = i
+        j = i + 1
+        fase = "buscar"
+    
+   
