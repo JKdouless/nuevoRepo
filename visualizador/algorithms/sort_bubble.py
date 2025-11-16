@@ -15,6 +15,10 @@ def init(vals):
 def step():
     global items, n, i, j
 
+    # Al terminar de ordenar devolvemos "done":True
+    if i >= n - 1:
+        return {"done": True}
+
     # Marcamos 2 indices en base a j
     a = j
     b = j + 1
@@ -36,7 +40,4 @@ def step():
      # Hacemos el intercambio correspondiente
     return {"a": a, "b": b, "swap": swap, "done": False}
 
-
-    # Al terminar de ordenar devolvemos "done":True
-    if i >= n - 1:
-        return {"done": True}
+    
