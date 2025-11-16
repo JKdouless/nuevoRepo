@@ -12,38 +12,31 @@ def init(vals):
     i = 0
     j = 0
 
-#def step():
-    # TODO:
-    # 1) Elegir índices a y b a comparar en este micro-paso (según tu Bubble).
-    # 2) Si corresponde, hacer el intercambio real en items[a], items[b] y marcar swap=True.
-    # 3) Avanzar punteros (preparar el próximo paso).
-    # 4) Devolver {"a": a, "b": b, "swap": swap, "done": False}.
-    #
-    # Cuando no queden pasos, devolvé {"done": True}.
- #   return {"done": True}
-
-
 def step():
     global items, n, i, j
 
-    # Fin si termino la wea
-    if n <= 1 or i >= n - 1:
-        return {"done": True}
-
+    # Marcamos 2 indices en base a j
     a = j
     b = j + 1
-    swap = False
 
-    # Comaparcion y truque si pinta
+    # Creamos una variable para señalar cuando swapear y cuando no
+    swap = False
     if items[a] > items[b]:
         items[a], items[b] = items[b], items[a]
         swap = True
 
-    # Muevo el variables de comparatione 
+    # Avanzamos
     j += 1
-    if j >= n - 1 - i:
-        i += 1
-        j = 0
 
+    # Al finalizar una pasada reseteamos j y avanzamos i
+    if j >= (n - 1 - i):
+        j = 0
+        i += 1
+
+     # Hacemos el intercambio correspondiente
     return {"a": a, "b": b, "swap": swap, "done": False}
-# Finiquitacion rapida
+
+
+    # Al terminar de ordenar devolvemos "done":True
+    if i >= n - 1:
+        return {"done": True}
