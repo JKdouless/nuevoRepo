@@ -1,28 +1,23 @@
 items = []
 stack = []
 n = 0
-done = False
 
 def init(vals):
-    global items, stack, n, done
+    global items, stack, n
     items = list(vals)
     n = len(items)
     stack = []
-    done = False
     
+    # Si la lista no esta vacia la añade al stack
     if n > 1:
         stack.append([0, n-1, 0, 0, "partition"])
 
 def step():
-    global items, stack, done
+    global items, stack
 
     # Al finalizar
 
-    if done:
-        return {"done": True}
-
     if not stack:
-        done = True
         return {"done": True}
 
 
@@ -45,7 +40,7 @@ def step():
             stack[-1] = [low, high, i, j, "partition"]
             return res
         else:
-            # Al terminar de ordenar seteamos el pivote
+            # Al terminar de ordenar seteamos el pivote 
             items[i], items[high] = items[high], items[i]
             mid = i
             stack.pop()
