@@ -137,28 +137,32 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
 #
 - **Shell**: Se implemento el algoritmo shell de modo que:
 
- 1. Se define la distancia entre los numeros a comparar de modo que
+1. Se define la distancia entre los numeros a comparar ``gaps``:
 
-    ``gaps = [2, 1]``, ``gap_index = 0``, ``gap = gaps[gap_index]``
+        h = 1
+        while h < n:
+    
+            gaps.insert(0, h) 
 
-2. Se setea ``i = gap`` , ``j = i`` y ``fase = "comparar"``
+            h = 3*h + 1
+        gap_index = 0
+        gap = gaps[gap_index]
 
-3.  Si el gap actual es mayor o igual al tamaño de la lista ``gap >= n``, se pasa al siguiente ``gap_index += 1``
+2. Se setea ``i = gap``, ``j = i``, ``temp = None`` y ``fase = "comparar"``
 
-4. ``fase == "comparar"``: Compara elementos separados por gap ``if items[j] < items[j-gap]`` si necesita moverlos setea ``fase = "swap"`` si no ``fase = "avanzar"``
-  y muestra los valores en el visualizador sin swapear
-  
-6. ``Fase == "swap"``: Intercambia los elementos separados por gap ``items[j], items[j-gap] = items[j-gap], items[j]``
+3. ``Fase == "comparar":`` setea ``temp = items[j]`` y mientras ``items[j - gap] > temp`` se desplaza el elemento hacia la derecha
 
-    ``j -= gap`` (como en inserción sobre sublista)
+   ``items[j] = items[j-gap]``
+   ``j -= gap ``
+   ``Retorna swap=True``
 
-    Retorna ``"swap"=True`` y vuelve a ``fase = "comparar"``
+4. cuando ya no corresponda desplazar se inserta temp en su lugar y cambia a ``fase = "avanzar"``
 
-7. ``Fase == "avanzar"``: Avanza ``i += 1`` y si  ``i < n:`` se setea ``j = i`` y vuelve a ``fase = "comparar"``
+5. ``Fase == "avanzar"``: se incrementa i y si ``i < n`` se setea ``j = i``, ``temp = None`` y vuelve a ``fase = "comparar"``
 
-    Si ``i >= n:``: se pasa al siguiente gap ``gap_index += 1``, se reinicia ``i = gap`` y ``j = i`` y vuelve a comparar ``fase = "comparar"``
+    Si ``i >= n `` Se actualiza el gap ``gap_index += 1``, reinicia ``i = gap`` y ``j = gap`` y vuelve a fase = ``"comparar"``
 
-8. Cuando no quedan gaps ``gap_index >= len(gaps)`` finaliza ``{"done": True}``
+6. Cuando ``gap_index >= len(gaps)`` se finaliza ``"done": True``
   
 #
 - **Visualizador**: Se implemento en el visulizador:
