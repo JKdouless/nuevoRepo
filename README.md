@@ -36,7 +36,6 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
     index.html   
   .gitignore
   README.md
-  test-pikachu.png
     
 ```
 ---
