@@ -33,54 +33,12 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
     sort_insertion.py
     sort_shell.py
     
----
-
-## 🔗 Contrato de los archivos `sort_<algo>.py`
-
-### `init(vals)`
-Se ejecuta una vez al comenzar (o tras mezclar).  
-Debe:
-- Guardar copia: `items = list(vals)`  
-- Guardar `n = len(items)`  
-- Inicializar los punteros o estado interno (`i`, `j`, `min_idx`, pila, etc.)
-
-### `step()`
-Se llama muchas veces. Cada llamada realiza **un solo micro-paso** y devuelve un diccionario:
-
-```python
-{
-  "a": int,     # índice A (0..n-1)
-  "b": int,     # índice B (0..n-1)
-  "swap": bool, # True si hiciste items[a] <-> items[b]
-  "done": bool  # True si el algoritmo terminó
-}
 ```
-
-**Reglas:**
-- `0 <= a,b < n`
-- Si `swap=True`, el intercambio ya debe haberse realizado:
-  ```python
-  items[a], items[b] = items[b], items[a]
-  return {"a": a, "b": b, "swap": True, "done": False}
-  ```
-- Al finalizar: `return {"done": True}`
-- Actualizá correctamente los punteros/estado en cada paso.
-
 ---
 
-## Nuevos algoritmos
-- Archivo: `algorithms/sort_<algo>.py`  
-- Agregar al `<select id="algorithm">` de `index.html` con `value="<algo>"`  
-- No hace falta modificar `index.html` para **Bubble**, **Selection** e **Insertion** 
+## Notas de implementacion
 
-## ✅ Entregables
-- **Obligatorio:**  
-  - Carpeta `/algorithms/` con **al menos 3** algoritmos (`bubble`, `selection`, `insertion`)  
-  - **Informe** detallado con decisiones y dificultades  
-  - **README del equipo** con integrantes y notas de implementación  
-- **Opcional:**  
-  - Nuevos algoritmos (`quick`, `merge`, `shell`, etc.)  
-  - Métricas, benchmarks o mejoras visuales  
+
 
 ---
 
