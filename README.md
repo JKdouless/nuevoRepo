@@ -1,12 +1,14 @@
 # TP — Visualización de algoritmos de ordenamiento
 
+## 👥 Integrantes
+
 Grupo 13 — Comisión 11, 2do Cuatrimestre 2025
 
-👥 Integrantes
+**Thomas Arias 46534733	@ThomasArias55**
 
-Thomas Arias 46534733	@ThomasArias55
+**Laureano Fernández Safuri	47121801	@JKdouless**
 
-Laureano Fernández Safuri	47121801	@JKdouless
+---
 
 ## Objetivos
 - Implementar **Bubble**, **Selection** e **Insertion** cumpliendo el **contrato** `init(vals)` + `step()` que usa la UI.
