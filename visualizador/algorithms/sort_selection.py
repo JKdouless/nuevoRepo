@@ -19,7 +19,7 @@ def step():
     if i >= n - 1:
         return {"done": True}
         
-
+#/////////////////////busco////////////////
     if fase == "buscar":
         if j < n:
             if items[j] < items[min_idx]:
@@ -29,6 +29,7 @@ def step():
             return {"a": i, "b": j_actual, "swap": False}
         else:
             fase = "swap"
+#/////////swap////////////////
     if fase == "swap":
         items[i], items[min_idx] = items[min_idx], items[i]
         a, b = i, min_idx
@@ -40,4 +41,5 @@ def step():
             return {"a": a, "b": b, "swap": True}
         else:
             return{"a": items[n-1],"b": items[n],"done": True}
+#/////////fin///////////////////////
         
