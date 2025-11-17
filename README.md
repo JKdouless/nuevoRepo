@@ -171,7 +171,7 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
   
    --Temporizador en ms, inciando desde que comienza hasta que termina de ordenar--
   
-   --Se soluciono error del boton "reset" del visualizador de modo que ya no se rompe al usarlo mientras de ordena la lista--
+   --Se soluciono error del boton "reset" del visualizador(en barras) de modo que ya no se rompe al usarlo mientras se ordena la lista--
   
 ---
 
