@@ -20,12 +20,12 @@ def step():
     if i >= n:
         return {"done": True, "a": None, "b": None, "swap": False}
 
-    # - Si j es None: empezar desplazamiento para el items[i] (p.ej., j = i) y devolver un highlight sin swap.
+    # - Si j es None: empezar desplazamiento para el items[i] (p.ej., j = i) y mostrar en el visualizador sin swap.
     if j is None:
         j = i
         return {"a": j, "b": j-1 if j > 0 else None, "swap": False, "done": False}
 
-    # - Mientras j > 0 y items[j-1] > items[j]: hacer UN swap adyacente (j-1, j) y devolverlo con swap=True.
+    # - Mientras j > 0 y items[j-1] > items[j]: hacer un swap adyacente (j-1, j) y devolverlo con swap=True.
     if j > 0 and items[j-1] > items[j]:
         items[j-1], items[j] = items[j], items[j-1]
         j -= 1
