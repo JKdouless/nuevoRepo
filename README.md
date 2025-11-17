@@ -25,8 +25,7 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
 
 ## 📦 Estructura del repositorio
 ```
-/visualizador/
-  index.html                     
+/visualizador/               
   /algorithms/
     sort_bubble.py
     sort_selection.py
@@ -34,6 +33,10 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
     sort_quick.py
     sort_insertion.py
     sort_shell.py
+    index.html   
+  .gitignore
+  README.md
+  test-pikachu.png
     
 ```
 ---
@@ -108,9 +111,9 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
    
     ``low``, ``high`` = primero y ultimo actual
 , ``i``, ``j`` = punteros internos
-, ``fase = "partition"``
+, ``fase == "partition"``
 
-3. ``fase = "partition"``: se setea el pivote ``p`` como el ultimo de la lista acutal ``p = items[high]``
+3. ``fase == "partition"``: se setea el pivote ``p`` como el ultimo de la lista acutal ``p = items[high]``
    
 4. Se recorre con ``j`` desde ``low`` hasta ``high-1``
 
@@ -133,7 +136,31 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
 8. Cuando el stack queda vacío al ordenar todas las sublistas retorna: ``{"done": True}``
 
 #
-- **Shell**:
+- **Shell**: Se implemento el algoritmo shell de modo que:
+
+ 1. Se define la distancia entre los numeros a comparar de modo que
+
+    ``gaps = [2, 1]``, ``gap_index = 0``, ``gap = gaps[gap_index]``
+
+2. Se setea ``i = gap`` , ``j = i`` y ``fase = "comparar"``
+
+3.  Si el gap actual es mayor o igual al tamaño de la lista ``gap >= n``, se pasa al siguiente ``gap_index += 1``
+
+4. ``fase == "comparar"``: Compara elementos separados por gap ``if items[j] < items[j-gap]`` si necesita moverlos setea ``fase = "swap"`` si no ``fase = "avanzar"``
+  y muestra los valores en el visualizador sin swapear
+  
+6. ``Fase == "swap"``: Intercambia los elementos separados por gap ``items[j], items[j-gap] = items[j-gap], items[j]``
+
+    ``j -= gap`` (como en inserción sobre sublista)
+
+    Retorna ``"swap"=True`` y vuelve a ``fase = "comparar"``
+
+7. ``Fase == "avanzar"``: Avanza ``i += 1`` y si  ``i < n:`` se setea ``j = i`` y vuelve a ``fase = "comparar"``
+
+    Si ``i >= n:``: se pasa al siguiente gap ``gap_index += 1``, se reinicia ``i = gap`` y ``j = i`` y vuelve a comparar ``fase = "comparar"``
+
+8. Cuando no quedan gaps ``gap_index >= len(gaps)`` finaliza ``{"done": True}``
+  
 #
 - **Visualizador**:
   
