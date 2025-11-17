@@ -161,7 +161,17 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
 8. Cuando no quedan gaps ``gap_index >= len(gaps)`` finaliza ``{"done": True}``
   
 #
-- **Visualizador**:
+- **Visualizador**: Se implemento en el visulizador:
+  
+   --Indicador del ordenamiento actual--
+  
+   --Contador de swaps en tiempo real--
+  
+   --Contador de pasos en tiempo real--
+  
+   --Temporizador en ms, inciando desde que comienza hasta que termina de ordenar--
+  
+   --Se soluciono error del boton "reset" del visualizador de modo que ya no se rompe al usarlo mientras de ordena la lista--
   
 ---
 
@@ -171,4 +181,4 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
 - [ ✅ ] `step` realiza un micro-paso  
 - [ ✅ ] Swaps hechos antes de devolver `swap=True`  
 - [ ✅ ] Probado con listas vacías, cortas, ordenadas e inversas  
-- [  ] Informe y README listos  
+- [ ✅ ] Informe y README listos  
