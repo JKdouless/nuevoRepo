@@ -40,8 +40,20 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
 
 ## Notas de implementacion
 
+- **Bubble**:
 
+- **Insertion**:
 
+- **Selection**:
+
+- **Merge**:
+
+- **Quick**:
+
+- **Shell**:
+
+- **Visualizador**:
+  
 ---
 
 ## ✅ Checklist antes de entregar
