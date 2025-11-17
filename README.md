@@ -53,9 +53,29 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
 5. Cuando ``i >= n - 1``, se retorna ``done = True``
 
 #
-- **Insertion**:
+- **Insertion**: Se implemento el algoritmo insertion de modo que:
+
+1. Cuando ``j is None``, se inicializa ``j = i`` y se muestra el estado sin swap.
+
+2. Mientras ``items[j-1]`` > ``items[j]``, se hace un swap adyacente y se decrementa ``j``.
+
+3. Cuando ya no hay que mover más el elemento se incrementa ``i`` y se resetea ``j = None``
+
+4. Cuando ``i >= n``, se retorna ``{"done": True}``
+
 #
-- **Selection**:
+- **Selection**: se implemento el algoritmo selection de modo que:
+
+1. se inicializa ``min_idx = i`` y ``j = i + 1``
+
+2. ``Fase "buscar"``: Se recorre la zona no ordenada y retorna cada comparación ``(swap=False)``, con cada elemento menor se actualiza ``min_idx``
+
+3. ``Fase "swap"``: Se hace un  swap entre ``i`` y ``min_idx``, Se retorna ``swap=True``
+
+4. Setea ``i`` para la próxima pasada, ``(i += 1)``
+
+5. Cuando ``i >= n - 1``, retorna ``{"done": True}``
+  
 #
 - **Merge**:
 #
