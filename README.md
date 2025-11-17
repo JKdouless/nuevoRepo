@@ -77,9 +77,61 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
 5. Cuando ``i >= n - 1``, retorna ``{"done": True}``
   
 #
-- **Merge**:
+- **Merge**: Se implemento el algoritmo merge usando fases:
+
+1. ``fase == "seleccionar"``: Si ya hemos recorrido toda la lista para ese ancho ``izq >= cantidad`` dobla el ancho, si no reinicia ``izq = 0``
+   
+2. Establece los límites (``izq``, ``medio``, ``der``) y punteros (``pi``, ``pj``) de la lista y cambia a ``fase = "comparar"``
+
+    se retorna: ``"swap": False`` y señalamos los dos punteros para visualización
+
+3. ``fase == "comparar"``: Si una de las sublistas se terminó ``pi >= medio or pj >= der`` duplica el ancho: ``izq += 2*ancho``, y vuelve a seleccionar ``fase = "seleccionar"``
+
+    retorna ``"swap": False``
+
+4. Si ``items[pj] < items[pi]``: se prepara para rotar: ``valor_rotando = items[pj]``, ``pk = pj``, ``fase = "rotar"``
+
+    muestra ``pi`` y ``pj`` sin swapear
+
+5. ``fase == "rotar"``: Si ``pk > pi`` desplaza un elemento a la derecha: ``items[pk] = items[pk-1]``, ``pk -= 1``
+
+   cada step retorna ``{"a": pk, "b": pk+1, "swap": True}`` hasta que ``pk <= pi``
+
+6. Ajusta los punteros: ``pi += 1``, ``medio += 1``, ``pj += 1`` y vuelve a ``fase = "comparar"``
+
+7. cuando ``ancho >= cantidad`` finaliza ``"done" = True``
+
 #
-- **Quick**:
+- **Quick**: Se implemento un algoritmo quicksort de modo que:
+  
+1. Si la lista tiene más de 1 elemento, se apila de en el ``stack=[[low, high, i, j, fase]]``
+   
+    ``low``, ``high`` = primero y ultimo actual
+, ``i``, ``j`` = punteros internos
+, ``fase = "partition"``
+
+3. ``fase = "partition"``: se setea el pivote ``p`` como el ultimo de la lista acutal ``p = items[high]``
+   
+4. Se recorre con ``j`` desde ``low`` hasta ``high-1``
+
+   en cada paso si ``items[j] <= p`` se swappean ``items[i]`` e ``items[j]`` y se incrementa ``i``
+
+   si ``items[j] > p`` se muestran en el visualizador sin swapear ``swap=False``
+
+   Siempre incrementa ``j``
+
+5. Cuando ``j == high``, la fase termina y se hace swap entre ``items[i]`` y ``items[high]``, dejando el pivote en su lugar definitivo y se setea el índice ``mid = i`` guardando la posición final del pivote.
+
+6. Se sacan los datos del stack actual ``(pop)`` y se añaden los datos de las sublistas para repetir el proceso
+
+    Si la parte derecha tiene elementos ``(mid+1 < high)``, se añade al stack ``[mid+1, high, mid+1, mid+1, "partition"]``
+
+    Si la parte izquierda tiene elementos ``(low < mid-1)``, se añade al stack ``[low, mid-1, low, low, "partition"]``
+
+7. Se recorren las sublistas de la misma manera que la lista original
+
+8. Cuando el stack queda vacío al ordenar todas las sublistas retorna: ``{"done": True}``
+
 #
 - **Shell**:
 #
