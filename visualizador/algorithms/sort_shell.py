@@ -22,11 +22,12 @@ def step():
     global items, n, gaps, gap_index, gap, i, j, fase
     if gap_index >= len(gaps):
         return {"done": True}
-    # Si el gap es mayor que n, saltamos al siguiente
+# /////////////fin rapido///////////
     if gap >= n:
         gap_index += 1
         if gap_index >= len(gaps):
             return {"done": True} # termino si no hay mas gaps
+# /////////defino///////////
         gap = gaps[gap_index] #q gap uso
         i = gap #equivalgo gap a i para pasar
         j = i #barredor
@@ -36,7 +37,7 @@ def step():
         else:
             b = j
         return {"a": j, "b": b, "swap": False}
-    # ///////////////// comparar ///////////////////
+# ///////////////// comparar ///////////////////
     if fase == "comparar":
         if j >= gap and items[j] < items[j - gap]: #posicion en la sublista actual
             fase = "swap"
@@ -52,14 +53,14 @@ def step():
             else:
                 b = j
             return {"a": j, "b": b, "swap": False}
-    # /////////////// swap ///////////////
+# /////////////// swap ///////////////
     if fase == "swap":
         items[j], items[j - gap] = items[j - gap], items[j] #intercambio con en la sublista del swap
         a, b = j, j - gap
         j -= gap
         fase = "comparar"
         return {"a": a, "b": b, "swap": True}
-    # /////////////// avanzo ///////////////////
+# /////////////// avanzo ///////////////////
     if fase == "avanzar":
         i += 1
         if i < n:
@@ -71,7 +72,7 @@ def step():
                 b = j
             return {"a": j, "b": b, "swap": False}
         else:
-            # cambio de gap
+#/////////// cambio de gap /////////////////
             gap_index += 1
             if gap_index >= len(gaps):
                 return {"done": True}
@@ -84,4 +85,4 @@ def step():
             else:
                 b = j
             return {"a": j, "b": b, "swap": False}
-    # ///////////// terminatres ///////////////////////
+# ///////////// terminatres ///////////////////////
