@@ -40,18 +40,29 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
 
 ## Notas de implementacion
 
-- **Bubble**:
+- **Bubble**: Se implemento el algoritmo bubble de tal manera que cada llamada a `step` realiza una única comparación (y posible swap) entre dos elementos consecutivos:
+  
+1. Compara `items[j]` y ``items[j+1]``
 
+2. Si están desordenados, los intercambia (``swap = True``)
+
+3. Avanza ``j``
+
+4. Si ``j`` llegó al límite de la pasada, se reinicia ``j = 0`` y se incrementa ``i``
+
+5. Cuando ``i >= n - 1``, se retorna ``done = True``
+
+#
 - **Insertion**:
-
+#
 - **Selection**:
-
+#
 - **Merge**:
-
+#
 - **Quick**:
-
+#
 - **Shell**:
-
+#
 - **Visualizador**:
   
 ---
