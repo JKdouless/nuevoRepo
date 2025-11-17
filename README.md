@@ -4,9 +4,9 @@ Grupo 13 — Comisión 11, 2do Cuatrimestre 2025
 
 👥 Integrantes
 
-Thomas Arias 46534733	@thomasarias55
+Thomas Arias 46534733	@ThomasArias55
 
-Laureano Fernández Safuri	47121801	@jkdouless
+Laureano Fernández Safuri	47121801	@JKdouless
 
 ## Objetivos
 - Implementar **Bubble**, **Selection** e **Insertion** cumpliendo el **contrato** `init(vals)` + `step()` que usa la UI.
