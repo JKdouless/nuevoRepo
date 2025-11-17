@@ -77,7 +77,30 @@ Existen múltiples estrategias (Bubble, Selection, Insertion, Quick, Merge, Shel
 5. Cuando ``i >= n - 1``, retorna ``{"done": True}``
   
 #
-- **Merge**:
+- **Merge**: Se implemento el algoritmo merge usando fases:
+
+1. ``fase == "seleccionar"``: Si ya hemos recorrido toda la lista para ese ancho ``izq >= cantidad`` dobla el ancho, si no reinicia ``izq = 0``
+   
+2. Establece los límites (``izq``, ``medio``, ``der``) y punteros (``pi``, ``pj``) de la lista y cambia a ``fase = "comparar"``
+
+    se retorna: ``"swap": False`` y señalamos los dos punteros para visualización
+
+3. ``fase == "comparar"``: Si una de las sublistas se terminó ``pi >= medio or pj >= der`` duplica el ancho: ``izq += 2*ancho``, y vuelve a seleccionar ``fase = "seleccionar"``
+
+    retorna ``"swap": False``
+
+4. Si ``items[pj] < items[pi]``: se prepara para rotar: ``valor_rotando = items[pj]``, ``pk = pj``, ``fase = "rotar"``
+
+    muestra ``pi`` y ``pj`` sin swapear
+
+5. ``fase == "rotar"``: Si ``pk > pi`` desplaza un elemento a la derecha: ``items[pk] = items[pk-1]``, ``pk -= 1``
+
+   cada step retorna ``{"a": pk, "b": pk+1, "swap": True}`` hasta que ``pk <= pi``
+
+6. Ajusta los punteros: ``pi += 1``, ``medio += 1``, ``pj += 1`` y vuelve a ``fase = "comparar"``
+
+7. cuando ``ancho >= cantidad`` finaliza ``"done" = True``
+
 #
 - **Quick**:
 #
